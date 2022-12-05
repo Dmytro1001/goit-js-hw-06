@@ -6,12 +6,20 @@ function handleSubmit(event) {
   event.preventDefault();
   const {
     elements: { email, password }
+
   } = event.currentTarget;
 
   if (email.value === "" || password.value === "") {
     return alert("Please fill in all the fields!");
-  }
+  };
 
-  console.log(`Email: ${email.value}, Password: ${password.value}`);
+  const formData = new FormData(event.currentTarget);
+  
+  console.log(formData); 
+
+  formData.forEach((value, key) => {
+    console.log(`${key}:`, value);
+  });
+  
   event.currentTarget.reset();
 }
